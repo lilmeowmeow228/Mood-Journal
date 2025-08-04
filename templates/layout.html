@@ -1,59 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mood Journal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-            padding: 20px;
-            color: #333;
-        }
-        .mood-icon {
-            width: 80px;
-            height: 80px;
-            margin: 5px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 10px;
-        }
-        .mood-icon:hover {
-            border: 2px solid #ff69b4;
-        }
-        textarea, input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .note-box, .plans-box {
-            margin: 20px 0;
-        }
-        button {
-            background-color: #ff69b4;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .entry {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        .timestamp {
-            font-size: 0.9em;
-            color: gray;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Mood Journal{% endblock %}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    a {
+      color: #ff69b4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e055a2;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 4px;
+      font-size: 1rem;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .mood-icon {
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      transition: border-color 0.3s ease;
+    }
+    .mood-icon:hover, .mood-icon.selected {
+      border-color: #ff69b4;
+    }
+    .entry {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .timestamp {
+      font-size: 0.9em;
+      color: gray;
+    }
+    header {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+  </style>
+  {% block head %}{% endblock %}
 </head>
 <body>
+  <div class="container">
+    <header>
+      {% if logged_in %}
+        <a href="{{ url_for('logout') }}"><strong>Logout</strong></a>
+      {% else %}
+        <a href="{{ url_for('login') }}"><strong>Login</strong></a>
+      {% endif %}
+    </header>
+
     {% block content %}{% endblock %}
+  </div>
 </body>
 </html>

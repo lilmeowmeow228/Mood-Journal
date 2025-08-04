@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood Journal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5;
+            padding: 20px;
+            color: #333;
+        }
+        .mood-icon {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 10px;
+        }
+        .mood-icon:hover {
+            border: 2px solid #ff69b4;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .note-box, .plans-box {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .entry {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .timestamp {
+            font-size: 0.9em;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
